@@ -2,7 +2,7 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
     <title>Marca Clara® · Sistema POS Profesional</title>
     <!-- Bootstrap 5 -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -10,8 +10,6 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    <!-- AOS Animations -->
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -24,77 +22,83 @@
             background: #ffffff;
             color: #1e293b;
             overflow-x: hidden;
+            width: 100%;
         }
 
         /* Navbar */
         .navbar {
             background: white;
             box-shadow: 0 2px 20px rgba(0,0,0,0.05);
-            padding: 1rem 0;
+            padding: 0.8rem 1rem;
+        }
+
+        .navbar .container {
+            padding-left: 0;
+            padding-right: 0;
         }
 
         .navbar-brand {
             font-weight: 800;
-            font-size: 1.8rem;
+            font-size: 1.4rem;
             background: linear-gradient(135deg, #4158D0, #C850C0);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             letter-spacing: -0.5px;
+            display: flex;
+            align-items: center;
         }
 
         .navbar-brand i {
-            font-size: 2rem;
-            margin-right: 10px;
-            background: linear-gradient(135deg, #4158D0, #C850C0);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+            font-size: 1.6rem;
+            margin-right: 6px;
         }
 
         .btn-wa {
             background: #25D366;
             color: white;
             border-radius: 50px;
-            padding: 0.6rem 1.5rem;
+            padding: 0.5rem 1rem;
             font-weight: 600;
+            font-size: 0.9rem;
             transition: all 0.3s;
             border: none;
-        }
-
-        .btn-wa:hover {
-            background: #128C7E;
-            color: white;
-            transform: translateY(-2px);
+            white-space: nowrap;
         }
 
         .btn-wa i {
-            margin-right: 8px;
+            margin-right: 5px;
         }
 
         /* Hero Section */
         .hero {
-            padding: 120px 0 80px;
+            padding: 100px 0 60px;
             background: linear-gradient(135deg, #4158D0, #C850C0);
             position: relative;
             overflow: hidden;
         }
 
+        .hero .container {
+            padding-left: 15px;
+            padding-right: 15px;
+        }
+
         .hero-badge {
             background: rgba(255,255,255,0.2);
             color: white;
-            padding: 0.4rem 1.2rem;
+            padding: 0.3rem 1rem;
             border-radius: 50px;
             display: inline-block;
-            margin-bottom: 1.5rem;
+            margin-bottom: 1rem;
             font-weight: 500;
-            backdrop-filter: blur(5px);
+            font-size: 0.85rem;
         }
 
         .hero-title {
-            font-size: 3rem;
+            font-size: 2rem;
             font-weight: 800;
             color: white;
-            margin-bottom: 1.5rem;
-            line-height: 1.2;
+            margin-bottom: 1rem;
+            line-height: 1.3;
         }
 
         .hero-title span {
@@ -102,28 +106,30 @@
         }
 
         .hero-description {
-            font-size: 1.1rem;
+            font-size: 1rem;
             color: rgba(255,255,255,0.9);
-            margin-bottom: 2rem;
-            max-width: 600px;
+            margin-bottom: 1.5rem;
         }
 
         .hero-stats {
             display: flex;
-            gap: 2rem;
-            margin-bottom: 2rem;
+            gap: 0.8rem;
+            margin-bottom: 1.5rem;
+            flex-wrap: wrap;
         }
 
         .stat-item {
             background: rgba(255,255,255,0.1);
-            padding: 1rem 2rem;
-            border-radius: 15px;
+            padding: 0.8rem 1.2rem;
+            border-radius: 12px;
             border: 1px solid rgba(255,255,255,0.2);
-            backdrop-filter: blur(5px);
+            flex: 1;
+            min-width: 100px;
+            text-align: center;
         }
 
         .stat-number {
-            font-size: 2rem;
+            font-size: 1.5rem;
             font-weight: 800;
             color: #FFD700;
             display: block;
@@ -131,51 +137,73 @@
 
         .stat-label {
             color: rgba(255,255,255,0.8);
-            font-size: 0.9rem;
+            font-size: 0.8rem;
+        }
+
+        .btn-light {
+            background: white;
+            color: #4158D0;
+            border-radius: 50px;
+            padding: 0.7rem 1.5rem;
+            font-weight: 600;
+            font-size: 0.95rem;
+            width: 100%;
+            margin-bottom: 0.5rem;
+            border: none;
+        }
+
+        .btn-outline-light {
+            background: transparent;
+            color: white;
+            border-radius: 50px;
+            padding: 0.7rem 1.5rem;
+            font-weight: 600;
+            font-size: 0.95rem;
+            width: 100%;
+            border: 1px solid rgba(255,255,255,0.5);
         }
 
         .device-mockup {
             background: rgba(255,255,255,0.1);
             backdrop-filter: blur(10px);
             border: 1px solid rgba(255,255,255,0.2);
-            border-radius: 30px;
-            padding: 2rem;
+            border-radius: 20px;
+            padding: 1.5rem;
             text-align: center;
             color: white;
+            margin-top: 2rem;
         }
 
         .device-icons {
             display: flex;
             justify-content: center;
-            gap: 2rem;
-            margin-bottom: 1.5rem;
+            gap: 1.5rem;
+            margin-bottom: 1rem;
         }
 
         .device-icons i {
-            font-size: 2.5rem;
+            font-size: 2rem;
             background: rgba(255,255,255,0.2);
-            width: 70px;
-            height: 70px;
-            line-height: 70px;
-            border-radius: 15px;
+            width: 50px;
+            height: 50px;
+            line-height: 50px;
+            border-radius: 12px;
         }
 
         /* Features Section */
-        .features {
-            padding: 80px 0;
-            background: white;
+        .features, .info-section, .coverage {
+            padding: 50px 0;
         }
 
         .section-title {
             text-align: center;
-            margin-bottom: 3rem;
+            margin-bottom: 2rem;
         }
 
         .section-title h2 {
-            font-size: 2.2rem;
+            font-size: 1.8rem;
             font-weight: 700;
-            color: #1e293b;
-            margin-bottom: 1rem;
+            margin-bottom: 0.5rem;
         }
 
         .section-title h2 span {
@@ -186,169 +214,160 @@
 
         .section-title p {
             color: #64748b;
-            font-size: 1rem;
-            max-width: 600px;
-            margin: 0 auto;
+            font-size: 0.95rem;
+            padding: 0 15px;
         }
 
         .feature-card {
             background: white;
             border-radius: 15px;
-            padding: 2rem;
+            padding: 1.5rem;
             box-shadow: 0 5px 20px rgba(0,0,0,0.03);
-            transition: all 0.3s;
-            height: 100%;
             border: 1px solid #e2e8f0;
-        }
-
-        .feature-card:hover {
-            transform: translateY(-5px);
-            border-color: #4158D0;
-            box-shadow: 0 10px 30px -10px #4158D0;
+            height: 100%;
+            margin-bottom: 1rem;
         }
 
         .feature-icon {
-            width: 60px;
-            height: 60px;
+            width: 50px;
+            height: 50px;
             background: linear-gradient(135deg, #4158D0, #C850C0);
-            border-radius: 15px;
+            border-radius: 12px;
             display: flex;
             align-items: center;
             justify-content: center;
-            margin-bottom: 1.5rem;
+            margin-bottom: 1rem;
         }
 
         .feature-icon i {
-            font-size: 1.8rem;
+            font-size: 1.5rem;
             color: white;
         }
 
         .feature-card h3 {
-            font-size: 1.2rem;
+            font-size: 1.1rem;
             font-weight: 700;
-            margin-bottom: 1rem;
+            margin-bottom: 0.5rem;
         }
 
         .feature-card p {
             color: #64748b;
-            line-height: 1.6;
-            font-size: 0.95rem;
+            font-size: 0.9rem;
+            line-height: 1.5;
+            margin-bottom: 0;
         }
 
         /* Info Section */
         .info-section {
-            padding: 80px 0;
             background: #f8fafc;
         }
 
         .info-card {
             background: white;
             border-radius: 15px;
-            padding: 2rem;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.03);
-            height: 100%;
+            padding: 1.5rem;
             border: 1px solid #e2e8f0;
+            height: 100%;
+            margin-bottom: 1rem;
         }
 
         .info-card h3 {
-            font-size: 1.3rem;
+            font-size: 1.1rem;
             font-weight: 700;
-            margin-bottom: 1.5rem;
+            margin-bottom: 1rem;
             color: #4158D0;
         }
 
         .info-list {
             list-style: none;
             padding: 0;
+            margin: 0;
         }
 
         .info-list li {
-            padding: 0.6rem 0;
-            border-bottom: 1px dashed #e2e8f0;
+            padding: 0.4rem 0;
             display: flex;
             align-items: center;
-            gap: 0.8rem;
+            gap: 0.5rem;
             color: #475569;
-            font-size: 0.95rem;
+            font-size: 0.9rem;
+            border-bottom: 1px dashed #e2e8f0;
+        }
+
+        .info-list li:last-child {
+            border-bottom: none;
         }
 
         .info-list li i {
             color: #10b981;
-            font-size: 1rem;
+            font-size: 0.9rem;
         }
 
         /* Business Grid */
         .business-grid {
             display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 1rem;
-            margin-top: 2rem;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 0.8rem;
+            margin-top: 1rem;
         }
 
         .business-item {
             background: white;
             border: 1px solid #e2e8f0;
             border-radius: 12px;
-            padding: 1.5rem 1rem;
+            padding: 1rem 0.5rem;
             text-align: center;
-            transition: all 0.3s;
-        }
-
-        .business-item:hover {
-            border-color: #4158D0;
-            transform: translateY(-3px);
-            box-shadow: 0 10px 20px -10px #4158D0;
         }
 
         .business-item i {
-            font-size: 2rem;
+            font-size: 1.5rem;
             color: #4158D0;
-            margin-bottom: 0.5rem;
+            margin-bottom: 0.3rem;
         }
 
         .business-item h4 {
-            font-size: 1rem;
+            font-size: 0.9rem;
             font-weight: 600;
             margin: 0;
         }
 
         /* Pricing Section */
         .pricing {
-            padding: 80px 0;
+            padding: 50px 0;
             background: linear-gradient(135deg, #4158D0, #C850C0);
         }
 
         .pricing-card {
             background: white;
             border-radius: 20px;
-            padding: 2.5rem;
+            padding: 1.8rem;
             box-shadow: 0 20px 40px -15px rgba(0,0,0,0.3);
         }
 
         .pricing-badge {
             background: #ffb703;
             color: white;
-            padding: 0.4rem 1.5rem;
+            padding: 0.3rem 1rem;
             border-radius: 50px;
             display: inline-block;
             font-weight: 600;
-            font-size: 0.9rem;
-            margin-bottom: 1.5rem;
+            font-size: 0.85rem;
+            margin-bottom: 1rem;
         }
 
         .pricing-price {
             text-align: center;
-            margin-bottom: 2rem;
+            margin-bottom: 1.5rem;
         }
 
         .pricing-price .currency {
-            font-size: 1.5rem;
+            font-size: 1.2rem;
             color: #64748b;
             vertical-align: top;
         }
 
         .pricing-price .amount {
-            font-size: 4rem;
+            font-size: 3rem;
             font-weight: 800;
             color: #4158D0;
             line-height: 1;
@@ -357,22 +376,22 @@
         .pricing-features {
             list-style: none;
             padding: 0;
-            margin: 1.5rem 0;
+            margin: 1rem 0;
         }
 
         .pricing-features li {
-            padding: 0.6rem 0;
-            border-bottom: 1px solid #e2e8f0;
+            padding: 0.4rem 0;
             display: flex;
             align-items: center;
-            gap: 0.8rem;
+            gap: 0.5rem;
             color: #475569;
-            font-size: 0.95rem;
+            font-size: 0.9rem;
+            border-bottom: 1px solid #e2e8f0;
         }
 
         .pricing-features li i {
             color: #10b981;
-            font-size: 1rem;
+            font-size: 0.9rem;
         }
 
         .pricing-features li strong {
@@ -382,17 +401,17 @@
         .pricing-includes {
             background: #f8fafc;
             border-radius: 12px;
-            padding: 1.5rem;
-            margin: 1.5rem 0;
+            padding: 1rem;
+            margin: 1rem 0;
         }
 
         .pricing-includes p {
-            margin: 0.5rem 0;
+            margin: 0.4rem 0;
             display: flex;
             align-items: center;
-            gap: 0.8rem;
+            gap: 0.5rem;
             color: #475569;
-            font-size: 0.95rem;
+            font-size: 0.85rem;
         }
 
         .pricing-includes i {
@@ -402,200 +421,225 @@
         .btn-pricing {
             background: linear-gradient(135deg, #4158D0, #C850C0);
             color: white;
-            padding: 1rem;
+            padding: 0.8rem;
             border-radius: 50px;
             font-weight: 600;
             width: 100%;
             border: none;
-            transition: all 0.3s;
             text-decoration: none;
             display: inline-block;
             text-align: center;
-        }
-
-        .btn-pricing:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 10px 30px -10px #4158D0;
-            color: white;
+            font-size: 0.95rem;
         }
 
         /* Coverage Section */
-        .coverage {
-            padding: 80px 0;
-            background: white;
-        }
-
         .coverage-card {
             text-align: center;
-            padding: 2rem;
+            padding: 1.5rem 1rem;
             border-radius: 15px;
             background: #f8fafc;
             border: 1px solid #e2e8f0;
             height: 100%;
-            transition: all 0.3s;
-        }
-
-        .coverage-card:hover {
-            border-color: #4158D0;
-            transform: translateY(-5px);
+            margin-bottom: 1rem;
         }
 
         .coverage-card i {
-            font-size: 2.5rem;
+            font-size: 2rem;
             color: #4158D0;
-            margin-bottom: 1rem;
+            margin-bottom: 0.5rem;
         }
 
         .coverage-card h4 {
-            font-size: 1.2rem;
+            font-size: 1.1rem;
             font-weight: 700;
-            margin-bottom: 1rem;
+            margin-bottom: 0.5rem;
         }
 
         .coverage-card p {
             color: #64748b;
-            margin: 0.3rem 0;
-            font-size: 0.95rem;
+            margin: 0.2rem 0;
+            font-size: 0.85rem;
         }
 
         /* CTA Section */
         .cta {
-            padding: 60px 0;
+            padding: 40px 0;
             background: #1e293b;
             color: white;
             text-align: center;
         }
 
         .cta h2 {
-            font-size: 2rem;
+            font-size: 1.6rem;
             font-weight: 700;
-            margin-bottom: 1rem;
+            margin-bottom: 0.5rem;
         }
 
         .cta p {
             color: #94a3b8;
-            margin-bottom: 2rem;
+            margin-bottom: 1.5rem;
+            font-size: 0.95rem;
         }
 
         .btn-cta-primary {
             background: white;
             color: #4158D0;
-            padding: 0.8rem 2rem;
+            padding: 0.7rem 1.5rem;
             border-radius: 50px;
             font-weight: 600;
-            margin: 0 0.5rem;
-            border: none;
+            font-size: 0.95rem;
+            width: 100%;
+            display: block;
             text-decoration: none;
-            display: inline-block;
-        }
-
-        .btn-cta-primary:hover {
-            background: #f1f5f9;
-            color: #4158D0;
+            margin-bottom: 0.5rem;
         }
 
         .btn-cta-secondary {
             background: transparent;
             color: white;
-            padding: 0.8rem 2rem;
+            padding: 0.7rem 1.5rem;
             border-radius: 50px;
             font-weight: 600;
-            border: 1px solid rgba(255,255,255,0.2);
+            border: 1px solid rgba(255,255,255,0.3);
+            font-size: 0.95rem;
+            width: 100%;
+            display: block;
             text-decoration: none;
-            display: inline-block;
-        }
-
-        .btn-cta-secondary:hover {
-            background: rgba(255,255,255,0.1);
-            color: white;
         }
 
         /* Footer */
         .footer {
             background: #0f172a;
             color: white;
-            padding: 3rem 0;
+            padding: 2rem 0;
             text-align: center;
         }
 
         .footer-logo {
-            font-size: 1.8rem;
+            font-size: 1.5rem;
             font-weight: 800;
             background: linear-gradient(135deg, #4158D0, #C850C0);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            margin-bottom: 1.5rem;
+            margin-bottom: 1rem;
         }
 
         .footer-contact {
             display: flex;
-            justify-content: center;
-            gap: 1rem;
-            flex-wrap: wrap;
-            margin: 1.5rem 0;
+            flex-direction: column;
+            gap: 0.5rem;
+            margin: 1rem 0;
         }
 
         .footer-contact a {
             background: rgba(255,255,255,0.05);
             color: white;
-            padding: 0.6rem 1.2rem;
+            padding: 0.6rem 1rem;
             border-radius: 50px;
             text-decoration: none;
-            display: inline-flex;
+            display: flex;
             align-items: center;
+            justify-content: center;
             gap: 0.5rem;
             font-size: 0.9rem;
             border: 1px solid rgba(255,255,255,0.1);
         }
 
-        .footer-contact a:hover {
-            background: #25D366;
-        }
-
         .footer-copyright {
             color: #64748b;
-            font-size: 0.85rem;
+            font-size: 0.8rem;
         }
 
-        /* Responsive */
-        @media (max-width: 768px) {
+        /* Container padding for mobile */
+        .container {
+            padding-left: 16px;
+            padding-right: 16px;
+        }
+
+        /* Row gutters for mobile */
+        .row {
+            margin-left: -8px;
+            margin-right: -8px;
+        }
+
+        .col-md-4, .col-md-6, .col-lg-3, .col-md-3 {
+            padding-left: 8px;
+            padding-right: 8px;
+        }
+
+        /* Tablet and up */
+        @media (min-width: 768px) {
+            .navbar-brand {
+                font-size: 1.8rem;
+            }
+
             .hero-title {
-                font-size: 2.2rem;
+                font-size: 3rem;
             }
 
             .hero-stats {
-                flex-direction: column;
-                gap: 1rem;
+                flex-wrap: nowrap;
+            }
+
+            .btn-light, .btn-outline-light {
+                width: auto;
+                display: inline-block;
+                margin-right: 0.5rem;
+            }
+
+            .business-grid {
+                grid-template-columns: repeat(4, 1fr);
+            }
+
+            .btn-cta-primary, .btn-cta-secondary {
+                width: auto;
+                display: inline-block;
+                margin: 0 0.5rem;
+            }
+
+            .footer-contact {
+                flex-direction: row;
+                justify-content: center;
+            }
+
+            .footer-contact a {
+                padding: 0.6rem 1.5rem;
+            }
+        }
+
+        /* Small phones */
+        @media (max-width: 375px) {
+            .hero-title {
+                font-size: 1.8rem;
+            }
+
+            .stat-item {
+                min-width: 80px;
+                padding: 0.6rem 0.8rem;
+            }
+
+            .stat-number {
+                font-size: 1.3rem;
             }
 
             .business-grid {
                 grid-template-columns: repeat(2, 1fr);
-            }
-
-            .btn-cta-primary, .btn-cta-secondary {
-                display: block;
-                width: 100%;
-                margin: 0.5rem 0;
-            }
-
-            .footer-contact {
-                flex-direction: column;
-                align-items: center;
+                gap: 0.5rem;
             }
         }
     </style>
 </head>
 <body>
     <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg fixed-top">
+    <nav class="navbar navbar-expand fixed-top">
         <div class="container">
             <a class="navbar-brand" href="#">
                 <i class="bi bi-shop"></i>
-                MARCA CLARA®
+                <span>MARCA CLARA®</span>
             </a>
             <div>
                 <a href="https://wa.me/53763792628?text=Hola%20Isaac%2C%20quiero%20informaci%C3%B3n%20sobre%20el%20sistema%20POS" class="btn btn-wa" target="_blank">
-                    <i class="bi bi-whatsapp"></i> +53 63792628
+                    <i class="bi bi-whatsapp"></i> <span class="d-none d-sm-inline">+53 63792628</span><span class="d-sm-none">WA</span>
                 </a>
             </div>
         </div>
@@ -605,16 +649,16 @@
     <section class="hero">
         <div class="container">
             <div class="row align-items-center">
-                <div class="col-lg-6" data-aos="fade-right">
+                <div class="col-12 col-lg-6">
                     <div class="hero-badge">
-                        <i class="bi bi-star-fill me-2"></i> Hecho en Cuba para cubanos
+                        <i class="bi bi-star-fill me-2"></i> Hecho en Cuba
                     </div>
                     <h1 class="hero-title">
                         CONTROLA TU NEGOCIO <br><span>DESDE UNA SOLA PC</span>
                     </h1>
                     <p class="hero-description">
                         Sistema de Punto de Venta profesional que funciona SIN INTERNET. 
-                        Tus dependientes venden desde sus celulares y tú ves todo en tiempo real.
+                        Tus dependientes venden desde sus celulares.
                     </p>
                     <div class="hero-stats">
                         <div class="stat-item">
@@ -627,27 +671,23 @@
                         </div>
                         <div class="stat-item">
                             <span class="stat-number">$150</span>
-                            <span class="stat-label">Pago único</span>
+                            <span class="stat-label">Único</span>
                         </div>
                     </div>
-                    <div class="mt-4">
-                        <a href="#pricing" class="btn btn-light btn-lg me-2" style="border-radius: 50px; padding: 0.8rem 2rem; font-weight: 600;">
-                            <i class="bi bi-cart-check"></i> COMPRAR
-                        </a>
-                        <a href="demo.html" class="btn btn-outline-light btn-lg" style="border-radius: 50px; padding: 0.8rem 2rem; font-weight: 600;" target="_blank">
-                            <i class="bi bi-play-circle"></i> DEMO GRATIS
-                        </a>
+                    <div class="d-block d-md-flex">
+                        <a href="#pricing" class="btn-light me-md-2 mb-2 mb-md-0">COMPRAR</a>
+                        <a href="https://wa.me/53763792628?text=Hola%20Isaac%2C%20quiero%20la%20DEMO%20GRATIS%20del%20sistema%20POS" class="btn-outline-light" target="_blank">DEMO GRATIS</a>
                     </div>
                 </div>
-                <div class="col-lg-6" data-aos="fade-left">
+                <div class="col-12 col-lg-6">
                     <div class="device-mockup">
                         <div class="device-icons">
                             <i class="bi bi-laptop"></i>
                             <i class="bi bi-phone"></i>
                             <i class="bi bi-tablet"></i>
                         </div>
-                        <p class="mb-2">PC + Celulares + Tablets</p>
-                        <h4 class="fw-bold">SIN INTERNET</h4>
+                        <p class="mb-1">PC + Celulares + Tablets</p>
+                        <h6 class="fw-bold">SIN INTERNET</h6>
                     </div>
                 </div>
             </div>
@@ -657,63 +697,63 @@
     <!-- Features Section -->
     <section class="features">
         <div class="container">
-            <div class="section-title" data-aos="fade-up">
+            <div class="section-title">
                 <h2>CARACTERÍSTICAS <span>PRINCIPALES</span></h2>
-                <p>Todo lo que necesitas para gestionar tu negocio</p>
+                <p>Todo lo que necesitas para tu negocio</p>
             </div>
-            <div class="row g-4">
-                <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
+            <div class="row g-3">
+                <div class="col-6 col-md-4">
                     <div class="feature-card">
                         <div class="feature-icon">
                             <i class="bi bi-cart"></i>
                         </div>
                         <h3>Ventas Rápidas</h3>
-                        <p>Carrito de compras, múltiples formas de pago y cálculo automático de cambio.</p>
+                        <p>Carrito, múltiples pagos y cambio automático.</p>
                     </div>
                 </div>
-                <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
+                <div class="col-6 col-md-4">
                     <div class="feature-card">
                         <div class="feature-icon">
                             <i class="bi bi-box"></i>
                         </div>
-                        <h3>Control de Inventario</h3>
-                        <p>Stock en tiempo real y alertas cuando un producto está por agotarse.</p>
+                        <h3>Control Stock</h3>
+                        <p>Inventario en tiempo real y alertas.</p>
                     </div>
                 </div>
-                <div class="col-md-4" data-aos="fade-up" data-aos-delay="300">
+                <div class="col-6 col-md-4">
                     <div class="feature-card">
                         <div class="feature-icon">
                             <i class="bi bi-people"></i>
                         </div>
                         <h3>Múltiples Usuarios</h3>
-                        <p>Administrador y dependientes con control de turnos individual.</p>
+                        <p>Admin y dependientes con turnos.</p>
                     </div>
                 </div>
-                <div class="col-md-4" data-aos="fade-up" data-aos-delay="400">
+                <div class="col-6 col-md-4">
                     <div class="feature-card">
                         <div class="feature-icon">
                             <i class="bi bi-phone"></i>
                         </div>
                         <h3>Vende desde Celular</h3>
-                        <p>Tus empleados se conectan con sus celulares vía WiFi local.</p>
+                        <p>Por WiFi local, sin internet.</p>
                     </div>
                 </div>
-                <div class="col-md-4" data-aos="fade-up" data-aos-delay="500">
+                <div class="col-6 col-md-4">
                     <div class="feature-card">
                         <div class="feature-icon">
                             <i class="bi bi-graph-up"></i>
                         </div>
-                        <h3>Reportes Básicos</h3>
-                        <p>Ventas por día, productos más vendidos y cierres de caja.</p>
+                        <h3>Reportes</h3>
+                        <p>Ventas, productos y cierres.</p>
                     </div>
                 </div>
-                <div class="col-md-4" data-aos="fade-up" data-aos-delay="600">
+                <div class="col-6 col-md-4">
                     <div class="feature-card">
                         <div class="feature-icon">
                             <i class="bi bi-wifi-off"></i>
                         </div>
                         <h3>Sin Internet</h3>
-                        <p>Funciona 100% local. Tus datos están en tu PC.</p>
+                        <p>100% local, datos en tu PC.</p>
                     </div>
                 </div>
             </div>
@@ -723,52 +763,49 @@
     <!-- Info Section -->
     <section class="info-section">
         <div class="container">
-            <div class="section-title" data-aos="fade-up">
+            <div class="section-title">
                 <h2>¿CÓMO <span>FUNCIONA</span>?</h2>
                 <p>Todo lo que necesitas saber</p>
             </div>
-            <div class="row g-4">
-                <div class="col-md-6 col-lg-3" data-aos="fade-up" data-aos-delay="100">
+            <div class="row g-3">
+                <div class="col-6 col-md-3">
                     <div class="info-card">
-                        <h3><i class="bi bi-shop me-2"></i> PUNTO DE VENTA</h3>
+                        <h3><i class="bi bi-shop"></i> PUNTO DE VENTA</h3>
                         <ul class="info-list">
-                            <li><i class="bi bi-check-circle-fill"></i> Carrito de compras</li>
-                            <li><i class="bi bi-check-circle-fill"></i> Efectivo, Tarjeta, Transferencia</li>
-                            <li><i class="bi bi-check-circle-fill"></i> Cálculo automático de cambio</li>
-                            <li><i class="bi bi-check-circle-fill"></i> Ticket de venta</li>
-                            <li><i class="bi bi-check-circle-fill"></i> Anulación de ventas</li>
+                            <li><i class="bi bi-check"></i> Carrito de compras</li>
+                            <li><i class="bi bi-check"></i> Efectivo, Tarjeta, Transfer</li>
+                            <li><i class="bi bi-check"></i> Cambio automático</li>
+                            <li><i class="bi bi-check"></i> Ticket de venta</li>
                         </ul>
                     </div>
                 </div>
-                <div class="col-md-6 col-lg-3" data-aos="fade-up" data-aos-delay="200">
+                <div class="col-6 col-md-3">
                     <div class="info-card">
-                        <h3><i class="bi bi-box-seam me-2"></i> INVENTARIO</h3>
+                        <h3><i class="bi bi-box"></i> INVENTARIO</h3>
                         <ul class="info-list">
-                            <li><i class="bi bi-check-circle-fill"></i> Stock en tiempo real</li>
-                            <li><i class="bi bi-check-circle-fill"></i> Alertas de stock mínimo</li>
-                            <li><i class="bi bi-check-circle-fill"></i> Categorías personalizables</li>
-                            <li><i class="bi bi-check-circle-fill"></i> Productos más vendidos</li>
+                            <li><i class="bi bi-check"></i> Stock en tiempo real</li>
+                            <li><i class="bi bi-check"></i> Alertas de stock mínimo</li>
+                            <li><i class="bi bi-check"></i> Categorías</li>
                         </ul>
                     </div>
                 </div>
-                <div class="col-md-6 col-lg-3" data-aos="fade-up" data-aos-delay="300">
+                <div class="col-6 col-md-3">
                     <div class="info-card">
-                        <h3><i class="bi bi-person-badge me-2"></i> USUARIOS</h3>
+                        <h3><i class="bi bi-people"></i> USUARIOS</h3>
                         <ul class="info-list">
-                            <li><i class="bi bi-check-circle-fill"></i> Administrador y Dependientes</li>
-                            <li><i class="bi bi-check-circle-fill"></i> Control de turnos</li>
-                            <li><i class="bi bi-check-circle-fill"></i> Cierre de caja</li>
-                            <li><i class="bi bi-check-circle-fill"></i> Aprobación de cierres</li>
+                            <li><i class="bi bi-check"></i> Admin y Dependientes</li>
+                            <li><i class="bi bi-check"></i> Control de turnos</li>
+                            <li><i class="bi bi-check"></i> Cierre de caja</li>
                         </ul>
                     </div>
                 </div>
-                <div class="col-md-6 col-lg-3" data-aos="fade-up" data-aos-delay="400">
+                <div class="col-6 col-md-3">
                     <div class="info-card">
-                        <h3><i class="bi bi-pie-chart me-2"></i> REPORTES</h3>
+                        <h3><i class="bi bi-file-text"></i> REPORTES</h3>
                         <ul class="info-list">
-                            <li><i class="bi bi-check-circle-fill"></i> Ventas por día</li>
-                            <li><i class="bi bi-check-circle-fill"></i> Productos más vendidos</li>
-                            <li><i class="bi bi-check-circle-fill"></i> Cierres de caja</li>
+                            <li><i class="bi bi-check"></i> Ventas por día</li>
+                            <li><i class="bi bi-check"></i> Productos más vendidos</li>
+                            <li><i class="bi bi-check"></i> Cierres de caja</li>
                         </ul>
                     </div>
                 </div>
@@ -777,42 +814,42 @@
     </section>
 
     <!-- Business Grid -->
-    <section class="features" style="padding-top: 0;">
+    <section class="features">
         <div class="container">
-            <div class="section-title" data-aos="fade-up">
-                <h2>PARA TODO TIPO DE <span>NEGOCIOS</span></h2>
+            <div class="section-title">
+                <h2>PARA TODO <span>NEGOCIO</span></h2>
                 <p>Diseñado para cualquier negocio en Cuba</p>
             </div>
             <div class="business-grid">
-                <div class="business-item" data-aos="zoom-in" data-aos-delay="100">
+                <div class="business-item">
                     <i class="bi bi-shop"></i>
                     <h4>Tiendas</h4>
                 </div>
-                <div class="business-item" data-aos="zoom-in" data-aos-delay="150">
+                <div class="business-item">
                     <i class="bi bi-cup-hot"></i>
                     <h4>Restaurantes</h4>
                 </div>
-                <div class="business-item" data-aos="zoom-in" data-aos-delay="200">
+                <div class="business-item">
                     <i class="bi bi-capsule"></i>
                     <h4>Farmacias</h4>
                 </div>
-                <div class="business-item" data-aos="zoom-in" data-aos-delay="250">
+                <div class="business-item">
                     <i class="bi bi-basket"></i>
                     <h4>Panaderías</h4>
                 </div>
-                <div class="business-item" data-aos="zoom-in" data-aos-delay="300">
+                <div class="business-item">
                     <i class="bi bi-hanger"></i>
-                    <h4>Tiendas de ropa</h4>
+                    <h4>Ropa</h4>
                 </div>
-                <div class="business-item" data-aos="zoom-in" data-aos-delay="350">
+                <div class="business-item">
                     <i class="bi bi-cake"></i>
                     <h4>Carnicerías</h4>
                 </div>
-                <div class="business-item" data-aos="zoom-in" data-aos-delay="400">
+                <div class="business-item">
                     <i class="bi bi-tree"></i>
                     <h4>Fruterías</h4>
                 </div>
-                <div class="business-item" data-aos="zoom-in" data-aos-delay="450">
+                <div class="business-item">
                     <i class="bi bi-box"></i>
                     <h4>Y más</h4>
                 </div>
@@ -824,7 +861,7 @@
     <section id="pricing" class="pricing">
         <div class="container">
             <div class="row justify-content-center">
-                <div class="col-lg-8" data-aos="fade-up">
+                <div class="col-12 col-lg-8">
                     <div class="pricing-card">
                         <div class="text-center">
                             <span class="pricing-badge">PRECIO ÚNICO</span>
@@ -833,41 +870,39 @@
                                 <span class="amount">150</span>
                                 <span class="period">USD</span>
                             </div>
-                            <p class="text-muted">PAGO ÚNICO · SIN MENSUALIDADES</p>
+                            <p class="text-muted small">PAGO ÚNICO · SIN MENSUALIDADES</p>
                         </div>
 
                         <div class="row">
-                            <div class="col-md-6">
+                            <div class="col-12 col-md-6">
                                 <ul class="pricing-features">
                                     <li><i class="bi bi-infinity"></i> <strong>SIN LÍMITE</strong> de usuarios</li>
                                     <li><i class="bi bi-infinity"></i> <strong>SIN LÍMITE</strong> de productos</li>
                                     <li><i class="bi bi-phone"></i> Ventas desde PC y celulares</li>
-                                    <li><i class="bi bi-clock"></i> Control de inventario</li>
                                 </ul>
                             </div>
-                            <div class="col-md-6">
+                            <div class="col-12 col-md-6">
                                 <ul class="pricing-features">
                                     <li><i class="bi bi-credit-card"></i> Múltiples formas de pago</li>
                                     <li><i class="bi bi-wifi-off"></i> Funciona SIN INTERNET</li>
                                     <li><i class="bi bi-tags"></i> Categorías personalizables</li>
-                                    <li><i class="bi bi-bar-chart"></i> Reportes de ventas</li>
                                 </ul>
                             </div>
                         </div>
 
                         <div class="pricing-includes">
-                            <p><i class="bi bi-check-circle-fill"></i> Instalación presencial en Santa Clara</p>
-                            <p><i class="bi bi-check-circle-fill"></i> Instalación remota para toda Cuba</p>
-                            <p><i class="bi bi-check-circle-fill"></i> Capacitación para ti y tus empleados</p>
-                            <p><i class="bi bi-check-circle-fill"></i> 3 meses de soporte por WhatsApp</p>
-                            <p><i class="bi bi-check-circle-fill"></i> Actualizaciones gratuitas</p>
+                            <p><i class="bi bi-check"></i> Instalación presencial en Santa Clara</p>
+                            <p><i class="bi bi-check"></i> Instalación remota para toda Cuba</p>
+                            <p><i class="bi bi-check"></i> Capacitación incluida</p>
+                            <p><i class="bi bi-check"></i> 3 meses de soporte por WhatsApp</p>
+                            <p><i class="bi bi-check"></i> Actualizaciones gratuitas</p>
                         </div>
 
                         <a href="https://wa.me/53763792628?text=Hola%20Isaac%2C%20quiero%20comprar%20el%20sistema%20POS%20de%20%24150%20USD" class="btn-pricing" target="_blank">
                             <i class="bi bi-whatsapp me-2"></i> CONTACTAR PARA COMPRAR
                         </a>
                         <p class="text-muted text-center mt-3 small">
-                            <i class="bi bi-info-circle me-1"></i> Pide la DEMO GRATIS antes de comprar
+                            <i class="bi bi-info-circle me-1"></i> Pide la DEMO GRATIS
                         </p>
                     </div>
                 </div>
@@ -878,41 +913,37 @@
     <!-- Coverage Section -->
     <section class="coverage">
         <div class="container">
-            <div class="section-title" data-aos="fade-up">
+            <div class="section-title">
                 <h2>COBERTURA E <span>INSTALACIÓN</span></h2>
                 <p>Cómo trabajamos</p>
             </div>
-            <div class="row g-4">
-                <div class="col-md-3" data-aos="fade-up" data-aos-delay="100">
+            <div class="row g-3">
+                <div class="col-6 col-md-3">
                     <div class="coverage-card">
-                        <i class="bi bi-geo-alt-fill"></i>
+                        <i class="bi bi-geo-alt"></i>
                         <h4>Santa Clara</h4>
-                        <p class="text-success">Instalación PRESENCIAL</p>
-                        <p class="text-muted small">Voy a tu negocio</p>
+                        <p class="text-success">PRESENCIAL</p>
                     </div>
                 </div>
-                <div class="col-md-3" data-aos="fade-up" data-aos-delay="200">
+                <div class="col-6 col-md-3">
                     <div class="coverage-card">
                         <i class="bi bi-globe2"></i>
                         <h4>Resto de Cuba</h4>
-                        <p class="text-success">Instalación REMOTA</p>
-                        <p class="text-muted small">Guía paso a paso</p>
+                        <p class="text-success">REMOTA</p>
                     </div>
                 </div>
-                <div class="col-md-3" data-aos="fade-up" data-aos-delay="300">
+                <div class="col-6 col-md-3">
                     <div class="coverage-card">
                         <i class="bi bi-laptop"></i>
                         <h4>Requisitos</h4>
                         <p>PC con Windows</p>
-                        <p class="text-muted small">Router WiFi opcional</p>
                     </div>
                 </div>
-                <div class="col-md-3" data-aos="fade-up" data-aos-delay="400">
+                <div class="col-6 col-md-3">
                     <div class="coverage-card">
                         <i class="bi bi-clock"></i>
                         <h4>Tiempo</h4>
                         <p>1-2 horas</p>
-                        <p class="text-muted small">Mismo día</p>
                     </div>
                 </div>
             </div>
@@ -922,19 +953,15 @@
     <!-- CTA Section -->
     <section class="cta">
         <div class="container">
-            <div class="row justify-content-center" data-aos="fade-up">
-                <div class="col-lg-8">
-                    <h2>¿LISTO PARA DIGITALIZAR TU NEGOCIO?</h2>
-                    <p>Pide tu demo gratis sin compromiso</p>
-                    <div>
-                        <a href="https://wa.me/53763792628?text=Hola%20Isaac%2C%20quiero%20la%20DEMO%20GRATIS%20del%20sistema%20POS" class="btn-cta-primary" target="_blank">
-                            <i class="bi bi-play-circle"></i> DEMO GRATIS
-                        </a>
-                        <a href="https://wa.me/53763792628?text=Hola%20Isaac%2C%20tengo%20una%20consulta%20sobre%20el%20sistema%20POS" class="btn-cta-secondary" target="_blank">
-                            <i class="bi bi-question-circle"></i> PREGUNTAR
-                        </a>
-                    </div>
-                </div>
+            <h2>¿LISTO PARA DIGITALIZARTE?</h2>
+            <p>Pide tu demo gratis sin compromiso</p>
+            <div class="d-block d-md-flex justify-content-center">
+                <a href="https://wa.me/53763792628?text=Hola%20Isaac%2C%20quiero%20la%20DEMO%20GRATIS%20del%20sistema%20POS" class="btn-cta-primary me-md-2 mb-2 mb-md-0" target="_blank">
+                    <i class="bi bi-play-circle"></i> DEMO GRATIS
+                </a>
+                <a href="https://wa.me/53763792628?text=Hola%20Isaac%2C%20tengo%20una%20consulta%20sobre%20el%20sistema%20POS" class="btn-cta-secondary" target="_blank">
+                    <i class="bi bi-question-circle"></i> PREGUNTAR
+                </a>
             </div>
         </div>
     </section>
@@ -954,20 +981,12 @@
                 </a>
             </div>
             <div class="footer-copyright">
-                <p>Desarrollado por Isaac Veitia Moreira · Santa Clara, Cuba</p>
-                <p>© 2025 MARCA CLARA® POS System</p>
+                <p>Isaac Veitia Moreira · Santa Clara</p>
+                <p>© 2025 MARCA CLARA®</p>
             </div>
         </div>
     </footer>
 
-    <!-- Scripts -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <script>
-        AOS.init({
-            duration: 1000,
-            once: true
-        });
-    </script>
 </body>
 </html>
